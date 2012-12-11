@@ -123,7 +123,7 @@ namespace cppdom
       Token& operator*();
 
       /// pointer access operator
-      const Token* operator->();
+      const Token* operator->() const;
 
       /// advances in the xml stream
       Tokenizer& operator++();
@@ -173,10 +173,10 @@ namespace cppdom
       void getNext();
 
       // internally used to recognize chars in the stream
-      bool isLiteral(char c);
-      bool isWhiteSpace(char c);
-      bool isNewLine(char c);
-      bool isStringDelimiter(char c); // start-/endchar of a string
+      bool isLiteral(char c) const;
+      bool isWhiteSpace(char c) const;
+      bool isNewLine(char c) const;
+      bool isStringDelimiter(char c) const; // start-/endchar of a string
 
       /** cdata-mode doesn't care for whitespaces in generic strings */
       bool mCdataMode;

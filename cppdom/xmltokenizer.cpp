@@ -136,7 +136,7 @@ namespace cppdom
       return mCurToken;
    }
 
-   const Token* Tokenizer::operator->()
+   const Token* Tokenizer::operator->() const
    {
       return &mCurToken;
    }
@@ -300,7 +300,7 @@ namespace cppdom
    }
 
    // returns if we have a literal char
-   bool xmlstream_iterator::isLiteral(char c)
+   bool xmlstream_iterator::isLiteral(char c) const
    {
       switch(c)
       {
@@ -320,7 +320,7 @@ namespace cppdom
    }
 
    // returns if we have a white space char
-   bool xmlstream_iterator::isWhiteSpace(char c)
+   bool xmlstream_iterator::isWhiteSpace(char c) const
    {
       switch(c)
       {
@@ -332,7 +332,7 @@ namespace cppdom
    }
 
    // returns if we have a newline
-   bool xmlstream_iterator::isNewLine(char c)
+   bool xmlstream_iterator::isNewLine(char c) const
    {
       switch(c)
       {
@@ -345,7 +345,7 @@ namespace cppdom
    }
 
    // returns if we have a string delimiter (separating " and ')
-   bool xmlstream_iterator::isStringDelimiter(char c)
+   bool xmlstream_iterator::isStringDelimiter(char c) const
    {
       switch(c)
       {
