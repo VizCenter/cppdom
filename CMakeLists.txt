@@ -19,7 +19,8 @@ set(VERSION_UNDERSCORES "${CPACK_PACKAGE_VERSION_MAJOR}_${CPACK_PACKAGE_VERSION_
 # Set up options
 ###
 
-# TODO this is not ideal/complete
+# TODO this is not ideal/complete - specifically it will fail on Mac
+# if building for multiple architectures.
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(arch "x86_64")
     set(ARCH_DIR lib64)
