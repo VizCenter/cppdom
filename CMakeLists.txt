@@ -42,7 +42,9 @@ endif()
 
 set(FLAGPOLL_INFO_DIR ${ARCH_DIR}/flagpoll)
 
+###
 # Create flagpoll file
+###
 set(provides "cppdom")
 set(version "${CPACK_PACKAGE_VERSION}")
 set(prefix "\${fp_file_cwd}/../..")
