@@ -679,7 +679,7 @@ namespace cppdom
          NodeList result(0);
          NodeList::const_iterator iter;
 
-         // search for all occurances of nodename and insert them into the new
+         // search for all occurrences of nodename and insert them into the new
          // list.
          for(iter = mNodeList.begin(); iter != mNodeList.end(); ++iter)
          {
