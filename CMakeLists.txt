@@ -128,7 +128,7 @@ install( FILES "cmake/Findcppdom.cmake"
 # =============================================
 
 # Add all targets to the build-tree export set
-export(TARGETS cppdom 
+export(TARGETS cppdom
     FILE "${PROJECT_BINARY_DIR}/${ARCH_DIR}/cppdomLibraryDepends.cmake")
 
 # Export the package for use from the build-tree
@@ -148,12 +148,12 @@ configure_file(Usecppdom.cmake.in
 install(EXPORT cppdom-targets DESTINATION ${ARCH_DIR})
 
 include( CMakePackageConfigHelpers )
-configure_package_config_file( 
+configure_package_config_file(
     cppdomConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/cppdomConfig.cmake
     INSTALL_DESTINATION ${ARCH_DIR}
     PATH_VARS INCLUDE_DIR )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/cppdomConfig.cmake 
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/cppdomConfig.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/cppdomConfigVersion.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/Usecppdom.cmake
         DESTINATION ${ARCH_DIR} )
