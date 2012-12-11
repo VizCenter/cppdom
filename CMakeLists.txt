@@ -3,7 +3,7 @@
 # http://academic.cleardefinition.com/
 # Iowa State University HCI Graduate Program/VRAC
 
-cmake_minimum_required(VERSION 2.8.8)
+cmake_minimum_required(VERSION 2.8.6)
 
 # Set package properties
 project(cppdom)
@@ -76,7 +76,11 @@ install(FILES cppdom-config
 ###
 # Perform build configuration of dependencies
 ###
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+if(CMAKE_VERSION VERSION_LESS 2.8.10)
+    # Compatibility: when all we need from newer CMake is a module.
+    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake-2.8.10-modules")
+endif()
 
 include(CTest)
 
