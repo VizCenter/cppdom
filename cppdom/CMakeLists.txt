@@ -39,11 +39,12 @@ set(CMAKE_DEBUG_POSTFIX  "_d-${VERSION_UNDERSCORES}")
 
 add_library(cppdom SHARED ${API} ${EXT_API} ${SOURCES})
 
-set_target_properties(cppdom PROPERTIES PUBLIC_HEADER "${API}"
-                      COMPILE_DEFINITIONS_DEBUG "CPPDOM_DEBUG")
-set_target_properties( cppdom PROPERTIES VERSION ${CPACK_PACKAGE_VERSION} )
-set_target_properties( cppdom PROPERTIES SOVERSION ${CPACK_PACKAGE_VERSION} )
-set_target_properties( cppdom PROPERTIES PROJECT_LABEL "Lib cppdom" )
+set_target_properties(cppdom PROPERTIES
+                      PUBLIC_HEADER "${API}"
+                      COMPILE_DEFINITIONS_DEBUG "CPPDOM_DEBUG"
+                      VERSION ${CPACK_PACKAGE_VERSION}
+                      SOVERSION ${CPACK_PACKAGE_VERSION}
+                      PROJECT_LABEL "Lib cppdom")
 
 install(TARGETS cppdom
         EXPORT cppdom-targets
