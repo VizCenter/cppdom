@@ -116,7 +116,7 @@ DATE        AUTHOR      CHANGE
 2003-01-11 allenb       Refactoring exception class.
                         cppdom::Error now tracks a local description of the
                         error as well as the file and line number that the error
-                        occured on.  There is a new macro that helps to
+                        occurred on.  There is a new macro that helps to
                         construct the Error class to throw.
                         Also fixed the attribute API to throw an exception when
                         passed an invalid attribute name.
