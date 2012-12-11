@@ -50,7 +50,9 @@
 #if defined(_WIN32) || defined(_WIN64)
 
 // switch some warnings off
-#  pragma warning( disable: 4786 4275 4251 )
+#  ifdef _MSC_VER
+#    pragma warning( disable: 4786 4275 4251 )
+#  endif
 
 // export/import #define's for building a win32 dll
 #  ifdef CPPDOM_EXPORTS
