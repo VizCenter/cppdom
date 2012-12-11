@@ -762,7 +762,7 @@ namespace cppdom
       // possible speedup: first search if a handle to the childname is existing
       NodeList::const_iterator iter;
 
-      // search for first occurance of node
+      // search for first occurrence of node
       for(iter = mNodeList.begin(); iter != mNodeList.end(); ++iter)
       {
          NodePtr np = (*iter);
@@ -804,7 +804,7 @@ namespace cppdom
       NodeList result(0);
       NodeList::const_iterator iter;
 
-      // search for all occurances of nodename and insert them into the new list
+      // search for all occurrences of nodename and insert them into the new list
       for(iter = mNodeList.begin(); iter != mNodeList.end(); ++iter)
       {
          const std::string node_name = (*iter)->getName();
@@ -1045,13 +1045,13 @@ namespace cppdom
          cppdom::Location where( mContext->getLocation() );
          std::string errmsg = e.getStrError();
 
-         // print out where the error occured
+         // print out where the error occurred
          std::cerr << filename << ":" << where.getLine() << " "
                    << "at position " << where.getPos()
                    << ": error: " << errmsg.c_str()
                    << std::endl;
 
-         // print out line where the error occured
+         // print out line where the error occurred
          std::ifstream errfile( filename.c_str() );
          if (!errfile)
          {
