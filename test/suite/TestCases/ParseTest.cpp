@@ -193,7 +193,7 @@ cppdom::DocumentPtr ParseMetricTest::loadDocNoCatch(std::string filename)
    return doc;
 }
 
-// Create a psuedo random document
+// Create a pseudo random document
 cppdom::DocumentPtr ParseMetricTest::createDocument(unsigned depth, unsigned seed)
 {
    srand48(seed);    // Seed randomness
