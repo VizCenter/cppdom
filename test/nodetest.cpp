@@ -32,7 +32,7 @@ bool configureInput( const std::string& filename )
       return false;
    }
 
-   std::cerr << "succesfully loaded " << filename << std::endl;
+   std::cerr << "successfully loaded " << filename << std::endl;
 
    cppdom::NodeList nl = doc.getChild( "gameinput" )->getChildren();
    cppdom::NodeListIterator it = nl.begin();

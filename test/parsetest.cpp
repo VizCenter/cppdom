@@ -53,13 +53,13 @@ void process_xml( std::string filename )
       Location where( context->getLocation() );
       std::string errmsg = e.getStrError();
 
-      // print out where the error occured
+      // print out where the error occurred
       cout << filename << ":" << where.getLine() << " ";
       cout << "at position " << where.getPos();
       cout << ": error: " << errmsg.c_str();
       cout << endl;
 
-      // print out line where the error occured
+      // print out line where the error occurred
       ifstream errfile( filename.c_str() );
       if(!errfile)
       {

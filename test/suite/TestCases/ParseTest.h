@@ -90,7 +90,7 @@ public:
    // Load the named file without catching exceptions
    cppdom::DocumentPtr loadDocNoCatch(std::string filename);
 
-   // Create a psuedo random document
+   // Create a pseudo random document
    cppdom::DocumentPtr createDocument(unsigned depth, unsigned seed=21);
 
    // Create a random branch of given depth

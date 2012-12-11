@@ -88,13 +88,13 @@ cppdom::Document PredTest::loadGameDoc()
      cppdom::Location where( ctx->getLocation() );
      std::string errmsg = e.getStrError();
 
-     // print out where the error occured
+     // print out where the error occurred
      std::cout << filename << ":" << where.getLine() << " "
                << "at position " << where.getPos()
                << ": error: " << errmsg.c_str()
                << std::endl;
 
-     // print out line where the error occured
+     // print out line where the error occurred
      std::ifstream errfile( filename.c_str() );
      if(!errfile)
      {
