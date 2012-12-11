@@ -559,7 +559,7 @@ namespace cppdom
       {
          if(false == (*my_child)->isEqual((*other_child), ignoreAttribs, ignoreElements, dbgit, debugIndent+3))
          {
-            if(dbgit) std::cout << indent << "Childrent different: not equal\n";
+            if(dbgit) std::cout << indent << "Children different: not equal\n";
             return false;
          }
       }
