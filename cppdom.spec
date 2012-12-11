@@ -40,7 +40,7 @@ Requires: flagpoll >= 0.8.1
 Requires: python
 
 %description config
-The cppdom-config Python script that provides backwards compability for older
+The cppdom-config Python script that provides backwards compatibility for older
 packages not using Flagpoll for getting compiler options necessary for
 building against CppDOM.
 
