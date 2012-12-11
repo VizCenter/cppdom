@@ -5,7 +5,8 @@
 set(CPPDOM_VERSION_MAJOR "${CPACK_PACKAGE_VERSION_MAJOR}")
 set(CPPDOM_VERSION_MINOR "${CPACK_PACKAGE_VERSION_MINOR}")
 set(CPPDOM_VERSION_PATCH "${CPACK_PACKAGE_VERSION_PATCH}")
-configure_file(version.h.in "${CMAKE_CURRENT_SOURCE_DIR}/version.h" @ONLY)
+configure_file(version.h.in "${CMAKE_CURRENT_BINARY_DIR}/version.h" @ONLY)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 set(API
     config.h
@@ -14,7 +15,7 @@ set(API
     shared_ptr.h
     xmlparser.h
     xmltokenizer.h
-    version.h)
+    "${CMAKE_CURRENT_BINARY_DIR}/version.h")
 set(EXT_API
     ext/OptionRepository.h)
 set(SOURCES
