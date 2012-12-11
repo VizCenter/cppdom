@@ -83,7 +83,7 @@ below).
 Universal Binaries
 ==================
 
-To build the CppDOM libraries as univeral binaries (Mac OS X only), use the
+To build the CppDOM libraries as universal binaries (Mac OS X only), use the
 following command:
 
    scons darwin_universal=yes var_arch=universal var_type=optimized \
