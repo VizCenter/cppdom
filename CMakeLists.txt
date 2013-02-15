@@ -3,7 +3,7 @@
 # http://academic.cleardefinition.com/
 # Iowa State University HCI Graduate Program/VRAC
 
-cmake_minimum_required(VERSION 2.8.8)
+cmake_minimum_required(VERSION 2.8.6)
 
 # Set package properties
 project(cppdom)
@@ -19,7 +19,8 @@ set(VERSION_UNDERSCORES "${CPACK_PACKAGE_VERSION_MAJOR}_${CPACK_PACKAGE_VERSION_
 # Set up options
 ###
 
-# TODO this is not ideal/complete
+# TODO this is not ideal/complete - specifically it will fail on Mac
+# if building for multiple architectures.
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(arch "x86_64")
     set(ARCH_DIR lib64)
@@ -41,24 +42,25 @@ endif()
 
 set(FLAGPOLL_INFO_DIR ${ARCH_DIR}/flagpoll)
 
+###
 # Create flagpoll file
+###
 set(provides "cppdom")
 set(version "${CPACK_PACKAGE_VERSION}")
 set(prefix "\${fp_file_cwd}/../..")
 set(exec_prefix "\${prefix}")
 set(includedir "\${fp_file_cwd}/../../${INCLUDE_DIR}")
 set(libdir "\${fp_file_cwd}/../../${ARCH_DIR}")
+set(include_path_flag "${CMAKE_INCLUDE_FLAG_C}")
+set(cppdom_libs "${CMAKE_LINK_LIBRARY_FLAG}cppdom-${VERSION_UNDERSCORES}")
+set(lib_path_flag ${CMAKE_LIBRARY_PATH_FLAG})
+set(cppdom_cxxflags)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR ( CMAKE_CXX_COMPILER_ID STREQUAL "Clang" ) )
     set(cppdom_cxxflags "-Wno-deprecated")
-    set(include_path_flag "-I")
-    set(cppdom_libs "-lcppdom-${VERSION_UNDERSCORES}")
-    set(lib_path_flag "-L")
 elseif(MSVC)
-    set(include_path_flag "/I")
-    set(lib_path_flag "/libpath:")
 else()
-    message(FATAL_ERROR "Compiler not recognized - can't generate values for Flagpoll file")
+    message(STATUS "Compiler not recognized - values for Flagpoll file might be incomplete")
 endif()
 
 configure_file(cppdom.fpc.in "${CMAKE_CURRENT_BINARY_DIR}/cppdom.fpc" @ONLY)
@@ -73,7 +75,11 @@ install(FILES cppdom-config
 ###
 # Perform build configuration of dependencies
 ###
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+if(CMAKE_VERSION VERSION_LESS 2.8.10)
+    # Compatibility: when all we need from newer CMake is a module.
+    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake-2.8.10-modules")
+endif()
 
 include(CTest)
 
@@ -122,7 +128,7 @@ install( FILES "cmake/Findcppdom.cmake"
 # =============================================
 
 # Add all targets to the build-tree export set
-export(TARGETS cppdom 
+export(TARGETS cppdom
     FILE "${PROJECT_BINARY_DIR}/${ARCH_DIR}/cppdomLibraryDepends.cmake")
 
 # Export the package for use from the build-tree
@@ -142,12 +148,12 @@ configure_file(Usecppdom.cmake.in
 install(EXPORT cppdom-targets DESTINATION ${ARCH_DIR})
 
 include( CMakePackageConfigHelpers )
-configure_package_config_file( 
+configure_package_config_file(
     cppdomConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/cppdomConfig.cmake
     INSTALL_DESTINATION ${ARCH_DIR}
     PATH_VARS INCLUDE_DIR )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/cppdomConfig.cmake 
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/cppdomConfig.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/cppdomConfigVersion.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/${ARCH_DIR}/Usecppdom.cmake
         DESTINATION ${ARCH_DIR} )
