@@ -414,12 +414,12 @@ namespace cppdom
       /** Autoconversion to string (so old code should work). */
       operator std::string() const;
 
-      bool operator==(const Attribute& rhs)
+      bool operator==(const Attribute& rhs) const
       {
          return rhs.mData == mData;
       }
 
-      bool operator!=(const Attribute& rhs)
+      bool operator!=(const Attribute& rhs) const
       {
          return !operator==(rhs);
       }
@@ -508,7 +508,7 @@ namespace cppdom
       explicit Node(ContextPtr pctx);
 
       /** Construct a node with a given name. */
-      explicit Node(std::string nodeName, ContextPtr ctx);
+      Node(std::string nodeName, ContextPtr ctx);
 
       Node(const Node& node);
 
@@ -552,13 +552,13 @@ namespace cppdom
       /** Returns type of node. */
       Node::Type getType() const;
 
-      bool isNode()
+      bool isNode() const
       { return getType() == xml_nt_node;}
-      bool isLeaf()
+      bool isLeaf() const
       { return getType() == xml_nt_leaf;}
-      bool isDocument()
+      bool isDocument() const
       { return getType() == xml_nt_document;}
-      bool isCData()
+      bool isCData() const
       { return getType() == xml_nt_cdata;}
 
       /** Sets new nodetype. */
