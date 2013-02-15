@@ -505,7 +505,7 @@ namespace cppdom
 
       // Check attribute values
       for(Attributes::iterator cur_attrib = other_attribs.begin();
-          cur_attrib != other_attribs.end(); cur_attrib++)
+          cur_attrib != other_attribs.end(); ++cur_attrib)
       {
          std::string attrib_name = (*cur_attrib).first;
          Attribute attrib_value = (*cur_attrib).second;
@@ -555,7 +555,7 @@ namespace cppdom
       NodeList::iterator my_child, other_child;
       for(my_child = mNodeList.begin(), other_child = other_children.begin();
           my_child != mNodeList.end(), other_child != other_children.end();
-          my_child++, other_child++)
+          ++my_child, ++other_child)
       {
          if(false == (*my_child)->isEqual((*other_child), ignoreAttribs, ignoreElements, dbgit, debugIndent+3))
          {
