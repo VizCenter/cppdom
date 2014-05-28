@@ -554,7 +554,7 @@ namespace cppdom
       // Recurse into each element
       NodeList::iterator my_child, other_child;
       for(my_child = mNodeList.begin(), other_child = other_children.begin();
-          my_child != mNodeList.end(), other_child != other_children.end();
+          my_child != mNodeList.end() && other_child != other_children.end();
           ++my_child, ++other_child)
       {
          if(false == (*my_child)->isEqual((*other_child), ignoreAttribs, ignoreElements, dbgit, debugIndent+3))
